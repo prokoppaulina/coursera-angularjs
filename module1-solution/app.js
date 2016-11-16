@@ -7,7 +7,7 @@ angular.module('LunchCheck', [])
 LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
     $scope.checkStatus = function(value) {
-        if (value != null){
+        if (value != ""){
             var array = value.split(",");
             var arrLen = array.length;
             var whitespaces = "";
@@ -19,10 +19,15 @@ function LunchCheckController($scope) {
                 }
             }
             
-            if (arrLen <= 3) {
+            if (arrLen <= 3 && arrLen > 0) {
                 $scope.myStyle = {color: 'green'};
                 $scope.inputStyle = {border: '4px solid green'};
                 return $scope.textboxStatus = "Enjoy!";
+            }
+            else if (arrLen === 0) {
+                $scope.inputStyle = {border: '1px solid black'};
+                $scope.myStyle = {color: 'black'};
+                return $scope.textboxStatus = "Please enter data first";
             }
             else {
                 $scope.myStyle = {color: 'red'};
@@ -32,6 +37,7 @@ function LunchCheckController($scope) {
         }
         else{
             $scope.inputStyle = {border: '1px solid black'};
+            $scope.myStyle = {color: 'black'};
             return $scope.textboxStatus = "Please enter data first";
         }
     };
