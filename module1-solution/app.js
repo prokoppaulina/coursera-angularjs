@@ -7,7 +7,7 @@ angular.module('LunchCheck', [])
 LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
     $scope.checkStatus = function(value) {
-        if (value != ""){
+        if (value != null){
             var array = value.split(",");
             var arrLen = array.length;
             var whitespaces = "";
